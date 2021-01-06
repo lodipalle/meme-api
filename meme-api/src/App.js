@@ -103,6 +103,25 @@ class App extends React.Component {
           </div>
         </div>
 
-        {this.state?.showModal}
+        {this.state?.showModal ?
+          <DetailModal
+            item={this.state.item}
+            showDetailModal={this.state.showModal}
+            handleClose={this.hideModal}
+            handleViewShow={this.showViewModalActive}
+          /> : ''}
+
+          {this.state?.showViewModal ?
+            <ViewModal
+              item={this.state.item}
+              showViewDetailModal={this.state.showViewModal}
+              handleClose={this.hideViewModal}
+              handleViewShow={this.handleViewShow}
+          /> : ''}
+
+
+      </>
+    );
+  }      
 
 export default App;
