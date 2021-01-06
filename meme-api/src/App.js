@@ -9,7 +9,7 @@ const styles = {
     padding: "5px"
 };
 const imagelength = {
-    width: "100%",
+    // width: "100%",
     height: "280px"
 };
 
