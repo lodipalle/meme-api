@@ -8,12 +8,10 @@ const styles = {
   margin: "5px",
   padding: "5px"
 };
-
 const imageLength = {
   width: "180%",
   height: "280px"
 };
-
 
 class App extends React.Component {
   state = {
@@ -36,35 +34,75 @@ class App extends React.Component {
       });
   }
 
-  
+  showModalActive = (item) => {
+    this.setState( {
+      showModal: true,
+      item: item
+    })
+  }
+
+  hideModal = () => {
+    this.setState({
+      showModal: false
+    })
+  }
+
+  showViewModalActive = () => {
+    this.hideModal()
+    this.setState({
+      showViewModal: true,
+    })
+  }
+
+  hideViewModal = () => {
+    this.setState({
+      showViewModal: false,
+      item: {}
+    })
+  }
+
 
   render() {
     var { isLoaded, items } = this.state;
     if (!isLoaded) {
       return <div>Loading...</div>;
+    } else {
     }
-    else { }
     return (
-      <div className="App">
-        <ul>
-          {
-            items !== undefined ?
-              (
-                items.map()(item => {
-                  <li key={item.id}>
-                    Name: {item.name}
-                    Item: {item.url}
-                    Width: {item.width}
-                    Height: {item.height}
-                    Box Count: {item.box_count}
-                  </li>
-                })
+      <>
+        <div className="App">
+          <div class="row">
+
+            {
+              items !== undefined ?
+                (
+
+                  items.map((item => {
+                    return (
+                      <div class="col-4" key={item.id}>
+                        <div class="card" style={styles}>
+                          <a href="#" onClick={() => this.showModalActive(item)}>
+                            <Image type={"link"} src={item.url}
+                              class="card-img-top" alt="..."
+                              style={imageLength}
+                            />
+                            </a>
+                              <div class="card-body">
+                                <h5 class="card-title">{item.name}</h5>
+                              </div>
+                        </div>
+
+                      </div>
+                    )
+
+                    })
               ) : ('')
           }
-        </ul>
-      </div>
-    );
-  }
-}
+
+
+          </div>
+        </div>
+
+        {this.state?.showModal}
 
 export default App;
