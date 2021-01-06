@@ -13,9 +13,10 @@ class App extends Component {
     fetch('https://api.imgflip.com/get_memes')
       .then(res => res.json())
       .then(json => {
+        console.log(json.data.memes)
         this.setState({
           isLoaded: true,
-          items: json.item,
+          items: json.data.memes,
         })
       });
   }
@@ -33,12 +34,12 @@ class App extends Component {
             items !== undefined ?
               (
                 items.map()(item => {
-                  <li key={item.meme.id}>
-                    Name: {item.meme.name}
-                    Item: {item.meme.url}
-                    Width: {item.meme.width}
-                    Height: {item.meme.height}
-                    Box Count: {item.meme.box_count}
+                  <li key={item.id}>
+                    Name: {item.name}
+                    Item: {item.url}
+                    Width: {item.width}
+                    Height: {item.height}
+                    Box Count: {item.box_count}
                   </li>
                 })
               ) : ('')
