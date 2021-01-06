@@ -15,7 +15,7 @@ class App extends Component {
       .then(json => {
         this.setState({
           isLoaded: true,
-          items: json.items,
+          items: json.item,
         })
       });
   }
@@ -30,19 +30,18 @@ class App extends Component {
       <div className="App">
         <ul>
           {
-            items != undefined ? 
-            ( 
-              items.map(item => {
-                <li key={item.id}>
-                  Name: {item.name}
-                  Url: {item.url}
-                  Width: {item.width}
-                  Height: {item.height}
-                  Box Count: {item.box_count}
-                </li>
-              },)
-            ):
-            ('')
+            items !== undefined ?
+              (
+                items.map()(item => {
+                  <li key={item.meme.id}>
+                    Name: {item.meme.name}
+                    Item: {item.meme.url}
+                    Width: {item.meme.width}
+                    Height: {item.meme.height}
+                    Box Count: {item.meme.box_count}
+                  </li>
+                })
+              ) : ('')
           }
         </ul>
       </div>
