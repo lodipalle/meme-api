@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
+import DetailModal from "./DetailModal";
+import ViewModal from "./ViewModal";
+import Image from "react-bootstrap/Image";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-      isLoaded: false,
-    }
+const styles = {
+  color: "red",
+  margin: "5px",
+  padding: "5px"
+};
+
+const imageLength = {
+  width: "180%",
+  height: "280px"
+};
+
+
+class App extends React.Component {
+  state = {
+    items: [],
+    isLoaded: false,
+    showModal: false,
+    showViewModal: false,
+    item: {}
   }
 
   componentDidMount() {
@@ -20,6 +35,8 @@ class App extends Component {
         })
       });
   }
+
+  
 
   render() {
     var { isLoaded, items } = this.state;
