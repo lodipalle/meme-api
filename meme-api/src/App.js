@@ -63,65 +63,66 @@ class App extends React.Component {
 
 
   render() {
-    var { isLoaded, items } = this.state;
+    var {isLoaded, items} = this.state;
     if (!isLoaded) {
-      return <div>Loading...</div>;
+        return <div>Loading...</div>;
     } else {
     }
     return (
-      <>
-        <div className="App">
-          <div class="row">
+        <>
+            <div className="App">
+                <div class="row">
 
-            {
-              items !== undefined ?
-                (
+                    {
+                        items !== undefined ?
+                            (
 
-                  items.map((item => {
-                    return (
-                      <div class="col-4" key={item.id}>
-                        <div class="card" style={styles}>
-                          <a href="#" onClick={() => this.showModalActive(item)}>
-                            <Image type={"link"} src={item.url}
-                              class="card-img-top" alt="..."
-                              style={imageLength}
-                            />
-                            </a>
-                              <div class="card-body">
-                                <h5 class="card-title">{item.name}</h5>
-                              </div>
-                        </div>
+                                items.map((item) => {
+                                    return (
+                                        <div class="col-4" key={item.id}>
+                                            <div class="card" style={styles}>
+                                              <a href="#"   onClick={() => this.showModalActive(item)}>
+                                                <Image type={"link"} src={item.url}
+                                                       class="card-img-top" alt="..."
+                                                       style={imagelength}
+                                                />
+                                              </a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{item.name}</h5>
+                                                </div>
+                                            </div>
 
-                      </div>
-                    )
+                                        </div>
+                                    )
 
-                    })
-              ) : ('')
-          }
-
-
-          </div>
-        </div>
-
-        {this.state?.showModal ?
-          <DetailModal
-            item={this.state.item}
-            showDetailModal={this.state.showModal}
-            handleClose={this.hideModal}
-            handleViewShow={this.showViewModalActive}
-          /> : ''}
-
-          {this.state?.showViewModal ?
-            <ViewModal
-              item={this.state.item}
-              showViewDetailModal={this.state.showViewModal}
-              handleClose={this.hideViewModal}
-              handleViewShow={this.handleViewShow}
-          /> : ''}
+                                })
+                            ) : ('')
+                    }
 
 
-      </>
+                </div>
+            </div>
+
+            {this.state?.showModal ?
+                <DetailModal
+                    item={this.state.item}
+                    showDetailModal={this.state.showModal}
+                    handleClose={this.hideModal}
+                    handleViewShow={this.showViewModalActive}
+                /> : ''}
+
+            {this.state?.showViewModal ?
+                <ViewModal
+                    item={this.state.item}
+                    showViewDetailModal={this.state.showViewModal}
+                    handleClose={this.hideViewModal}
+                    handleViewShow={this.handleViewShow}
+                /> : ''}
+
+
+        </>
     );
-  }      
+}
+}
 
 export default App;
