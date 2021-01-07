@@ -39,4 +39,5 @@ const ViewModal = (props) => {
     )
 
 }
+
 export default ViewModal
